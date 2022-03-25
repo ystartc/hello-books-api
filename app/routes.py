@@ -12,12 +12,11 @@ def validate_book(book_id):
     except:
         abort(make_response({"message":f"book {book_id} invalid"}, 400))
 
-    book = Book.query.get(book_id)
+    for book in books:
+        if book.id == book_id:
+            return book_id
 
-    if not book:
-        abort(make_response({"message":f"book {book_id} not found"}, 404))
-
-    return book
+    abort(make_response({"message":f"book {book_id} not found"}, 404))
 
 @books_bp.route("", methods=["POST"])
 def create_book():
