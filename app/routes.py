@@ -37,7 +37,7 @@ def handle_books():
 #
 #    for book in books:
 #        if book.id == book_id:
-#            return book_id
+#            return book
 #
 #    abort(make_response({"message":f"book {book_id} not found"}, 404))
         
@@ -57,14 +57,11 @@ def handle_books():
 
 # @books_bp.route("/<book_id>", methods=["GET"])
 # def handle_book(book_id):
-#     validate_book(book_id)
-
-#     for book in books:
-#         if book.id == book_id:
-#             return {
-#                 "id": book.id,
-#                 "title": book.title,
-#                 "description": book.description,
-#             }
-
+#     book = validate_book(book_id)
+#
+#     return {
+#           "id": book.id,
+#           "title": book.title,
+#           "description": book.description,
+#     }
 
