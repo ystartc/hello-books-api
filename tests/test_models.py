@@ -29,7 +29,7 @@ def test_to_dict_missing_id():
     assert result["title"] == "Ocean Book"
     assert result["description"] == "watr 4evr"
 
-def test_to_dict_missing_title(client):
+def test_to_dict_missing_title():
     # Arrange
     test_data = Book(id=1,
                     description="watr 4evr")
@@ -43,7 +43,7 @@ def test_to_dict_missing_title(client):
     assert result["title"] is None
     assert result["description"] == "watr 4evr"
 
-def test_to_dict_missing_description(client):
+def test_to_dict_missing_description():
     # Arrange
     test_data = Book(id = 1,
                     title="Ocean Book")
