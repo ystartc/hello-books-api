@@ -6,19 +6,6 @@ from flask import Blueprint, jsonify, abort, make_response, request
 
 genres_bp = Blueprint("genres_bp", __name__, url_prefix="/genres")
 
-def validate_genre(genre_id):
-    try:
-        genre_id = int(genre_id)
-    except:
-        abort(make_response({"message":f"genre {genre_id} invalid"}, 400))
-
-    genre = Genre.query.get(genre_id)
-
-    if not genre:
-        abort(make_response({"message":f"genre {genre_id} not found"}, 404))
-
-    return genre
-
 @genres_bp.route("", methods=["POST"])
 def create_genre():
     request_body = request.get_json()
