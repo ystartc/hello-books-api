@@ -10,4 +10,10 @@ class Author(db.Model):
                 'id': self.id,
                 'name': self.name
                 }
-    
+        
+    @classmethod
+    def from_dict(cls, request_body):
+        author = cls(
+                    name=request_body['name']
+                    )
+        return author
