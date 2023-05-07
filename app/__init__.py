@@ -18,6 +18,7 @@ def create_app(test_config=None):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     from app.models.book import Book
+    from app.models.author import Author
     
     db.init_app(app)
     migrate.init_app(app, db)
