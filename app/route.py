@@ -1,6 +1,7 @@
-from app import db
-from app.models.book import Book
 from flask import Blueprint, abort, jsonify, make_response, request
+from app.models.book import Book
+from app import db
+
 
 books_bp = Blueprint('books', __name__, url_prefix='/books')
 
