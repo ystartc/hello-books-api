@@ -41,3 +41,13 @@ def create_book(author_id):
     db.session.commit()
     
     return {'msg': f'Book {new_book.title} by {new_book.author.name} created'}, 201
+
+@author_bp.route('/author_id/books', methods=['GET'])
+def get_books_by_author(author_id):
+    author = validate_id(Author, author_id)
+    
+    books = Book.query.join(Author).filter_by(Author.id == author_id).all()
+    # book_response = [book.to_dict() for book in author.books]
+    book_response = [book.to_dict().update(author=author) for book in books]
+    
+    return jsonify(book_response), 200
