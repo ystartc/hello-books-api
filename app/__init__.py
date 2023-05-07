@@ -26,7 +26,7 @@ def create_app(test_config=None):
     from .route import books_bp
     app.register_blueprint(books_bp)
     
-    from .route_author import authot_bp
-    app.register_blueprint(authot_bp)
+    from .route_author import author_bp
+    app.register_blueprint(author_bp)
     
     return app
