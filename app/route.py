@@ -34,7 +34,7 @@ def create_book():
 def read_books():
     title_query = request.args.get('title')
     if title_query:
-        books = Book.query.filter(Book.title.ilike(title_query+'%'.strip()))
+        books = Book.query.filter(Book.title.ilike(title_query.strip()+'%'))
     else:
         books = Book.query.all()
 
