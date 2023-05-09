@@ -15,13 +15,15 @@ class Book(db.Model):
         return {
             'id': self.id,
             'title': self.title,
-            'description': self.description
-        }
+            'description': self.description,
+            'author_id': self.author_id
+            }
        
     @classmethod 
     def from_dict(cls, request_body):
         book = cls(
                 title=request_body["title"],
-                description=request_body['description']
+                description=request_body['description'],
+                author_id=request_body['author_id']
                 )
         return book

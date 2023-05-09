@@ -14,7 +14,8 @@ def create_app(test_config=None):
     if test_config:
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('TEST_DB_URI')
     else:
-        app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DEV_DB_URI')
+        # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DEV_DB_URI')
+        app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('RENDER_DB_URI')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     from app.models.book import Book

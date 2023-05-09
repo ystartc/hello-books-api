@@ -27,7 +27,7 @@ def get_authors():
     
     return jsonify(author_response), 200
 
-@author_bp.route('/author_id/books', methods=['POST'])
+@author_bp.route('/<author_id>/books', methods=['POST'])
 def create_book(author_id):
     author = validate_id(Author, author_id)
     request_body = request.get_json()
@@ -42,12 +42,13 @@ def create_book(author_id):
     
     return {'msg': f'Book {new_book.title} by {new_book.author.name} created'}, 201
 
-@author_bp.route('/author_id/books', methods=['GET'])
+@author_bp.route('/<author_id>/books', methods=['GET'])
 def get_books_by_author(author_id):
     author = validate_id(Author, author_id)
     
-    books = Book.query.join(Author).filter_by(Author.id == author_id).all()
-    # book_response = [book.to_dict() for book in author.books]
-    book_response = [book.to_dict().update(author=author) for book in books]
+    # books = Book.query.filter(Author.id == author_id)
+    book_response = [book.to_dict() for book in author.books]
+    # book_response = [book.to_dict().update({'author': author.name}) for book in books]
+    # book_response = [book.to_dict() for book in books]
     
     return jsonify(book_response), 200
